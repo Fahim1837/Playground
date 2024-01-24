@@ -1,10 +1,7 @@
-import PostList from "./components/PostList"
-import TodoList from "./components/TodoList"
+import PostList from "./components/PostList";
 
 function App() {
-  return (
-    <PostList/>
-  )
+  return <PostList />;
 }
 
-export default App
+export default App;

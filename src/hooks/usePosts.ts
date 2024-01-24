@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import apiClient from '../services/api-services'
 
 interface Posts {
-    userID: number
+    userId: number
     id: number
     title: string
     body: string

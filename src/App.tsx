@@ -1,8 +1,8 @@
-import TodoList from "./components/TodoList"
+import PostList from "./components/PostList"
 
 function App() {
   return (
-    <TodoList/>
+    <PostList/>
   )
 }
 

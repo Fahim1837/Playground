@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
+import apiClient from '../services/api-services'
 
 interface Posts {
     userID: number
@@ -10,7 +10,7 @@ interface Posts {
 
 const usePosts = () => {
     const fetchPosts = () => 
-    axios.get <Posts[]> ('https://jsonplaceholder.typicode.com/posts')
+    apiClient.get <Posts[]> ('/posts')
         .then((res) => res.data)
 
     return useQuery({

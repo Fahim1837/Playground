@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import axios from "axios"
+import apiClient from '../services/api-services'
 
 interface Todos {
     userId: number,
@@ -10,8 +10,8 @@ interface Todos {
 
 const useTodos = () => {
     const fetchTodos = () => 
-        axios
-        .get <Todos[]>('https://jsonplaceholder.typicode.com/todos')
+        apiClient
+        .get <Todos[]>('/todos')
         .then((res) => (res.data))
 
     return useQuery({

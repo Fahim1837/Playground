@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import apiClient from "../services/api-services";
+import APIClient from "../services/api-client";
 
 interface Posts {
   userId: number;
@@ -9,19 +9,15 @@ interface Posts {
 }
 
 const usePosts = (page: number, pageSize: number) => {
-  const fetchPosts = () =>
-    apiClient
-      .get<Posts[]>("/posts", {
-        params: {
-          _start: page,
-          _limit: pageSize,
-        },
-      })
-      .then((res) => res.data);
-
+  
+  const apiClient = new APIClient <Posts> ('/posts', { params: {
+      _start: page,
+      _limit: pageSize,
+    }})
+  
   return useQuery({
     queryKey: ["posts", page],
-    queryFn: fetchPosts,
+    queryFn: apiClient.getAll,
     placeholderData: (prevData) => prevData
   });
 };

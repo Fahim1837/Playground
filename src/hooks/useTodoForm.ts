@@ -1,21 +1,28 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import apiClient from "../services/api-services"
-import { Todos } from "./useTodos"
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import apiClient, { Todos } from "../services/todo-services";
 
 const useTodoForm = () => {
-    const queryClient = useQueryClient ()
+  const queryClient = useQueryClient();
 
-    const addTodo = (todo: Todos) => 
-        apiClient
-            .post <Todos>('/todos', todo)
-            .then((res) => res.data)
+  return useMutation({
+    mutationFn: apiClient.postAll,
+    onMutate: (newTodo: Todos) => {
+      const prevTodos = queryClient.getQueryData<Todos>(["todos"]);
+      queryClient.setQueryData<Todos[]>(["todos"], (todo = []) => [newTodo,...todo]);
+      return { prevTodos };
+    },
 
-    return useMutation ({
-        mutationFn: addTodo,
-        onSuccess: (savedTodo) => {
-            queryClient.setQueryData <Todos[]>(['todos'], (todo) => [savedTodo, ...(todo || [])] )
-        }
-    })
-}
+    // onSuccess: (savedTodo, newTodo) => {
+    //   queryClient.setQueryData<Todos[]>(["todos"], (todos) =>
+    //     todos?.map((item) => (item === newTodo ? savedTodo : item)),
+    //   );
+    // },
 
-export default useTodoForm
+    // onError: (error, newTodo, context) => {
+    //   if (!context) return;
+    //   queryClient.setQueryData(["todos"], context.prevTodos);
+    // },
+  });
+};
+
+export default useTodoForm;

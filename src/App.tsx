@@ -3,10 +3,11 @@ import TodoList from "./components/TodoList";
 
 function App() {
   return (
-  <>
-  <TodoForm/>
-  <TodoList />;
-  </>
-)}
+    <>
+      <TodoForm />
+      <TodoList />;
+    </>
+  );
+}
 
 export default App;

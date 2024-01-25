@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient from "../services/api-services";
 
-interface Todos {
+export interface Todos {
   userId: number;
   id: number;
   title: string;

@@ -1,7 +1,12 @@
-import CommentList from "./components/CommentList";
+import TodoForm from "./components/TodoForm";
+import TodoList from "./components/TodoList";
 
 function App() {
-  return <CommentList />;
-}
+  return (
+  <>
+  <TodoForm/>
+  <TodoList />;
+  </>
+)}
 
 export default App;

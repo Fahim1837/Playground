@@ -1,7 +1,5 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { FormEvent, useRef } from "react"
-import apiClient from "../services/api-services"
-import { Todos } from "../hooks/useTodos"
+import useTodoForm from "../hooks/useTodoForm"
 
 function TodoForm() {
     const inputRef = useRef <HTMLInputElement>(null)
@@ -17,19 +15,11 @@ function TodoForm() {
             completed: false,
         })
     }
-    const queryClient = useQueryClient ()
+   
+    const {mutate, error} = useTodoForm()
 
-    const addTodo = (todo: Todos) => 
-        apiClient
-            .post <Todos>('/todos', todo)
-            .then((res) => res.data)
+    if (error) return (<div className="alert alert-danger">{error.message}</div>)
 
-    const {mutate} =useMutation ({
-        mutationFn: addTodo,
-        onSuccess: (savedTodo) => {
-            queryClient.setQueryData <Todos[]>(['todos'], (todo) => [savedTodo, ...(todo || [])] )
-        }
-    })
   return (
     <form className="row my-3" onSubmit={(e) =>handleSubmit (e)}>
         <div className="col">

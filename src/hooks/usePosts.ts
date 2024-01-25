@@ -22,6 +22,7 @@ const usePosts = (page: number, pageSize: number) => {
   return useQuery({
     queryKey: ["posts", page],
     queryFn: fetchPosts,
+    placeholderData: (prevData) => prevData
   });
 };
 

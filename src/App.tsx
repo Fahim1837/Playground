@@ -1,7 +1,7 @@
-import PostList from "./components/PostList";
+import CommentList from "./components/CommentList";
 
 function App() {
-  return <PostList />;
+  return <CommentList />;
 }
 
 export default App;

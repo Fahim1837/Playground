@@ -1,5 +1,5 @@
-import TodoForm from "./components/TodoForm";
-import TodoList from "./components/TodoList";
+import TodoForm from "./react-query/components/TodoForm";
+import TodoList from "./react-query/components/TodoList";
 
 function App() {
   return (

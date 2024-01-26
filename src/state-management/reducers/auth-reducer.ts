@@ -9,11 +9,11 @@ interface LogoutAction {
 
 export type AuthAction = LoginAction | LogoutAction
 
-const AuthReducer = (state: string, action: AuthAction) => {
+const authReducer = (state: string, action: AuthAction) => {
     switch (action.type) {
         case 'IN':  return state = action.username
         case 'OUT': return state = ''
     }
 }
 
-export default AuthReducer
+export default authReducer

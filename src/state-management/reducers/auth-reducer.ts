@@ -14,6 +14,7 @@ const authReducer = (state: string, action: AuthAction) => {
         case 'IN':  return state = action.username
         case 'OUT': return state = ''
     }
+    return state
 }
 
 export default authReducer

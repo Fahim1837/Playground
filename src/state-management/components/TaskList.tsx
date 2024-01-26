@@ -1,21 +1,20 @@
-import { useReducer } from "react";
-import taskReducer from "../reducers/task-reducer";
+import { useContext } from "react";
+import TaskContext from "../contexts/task-context";
 
 
 function TaskList() {
-  const [task, dispatch] = useReducer (taskReducer, [])
-
+  const {tasks, dispatch} = useContext(TaskContext)
   return (
     <>
       <button
         className="btn btn-primary m-4"
         onClick={() => 
-        dispatch({type:'ADD', tasks: {id:Date.now(), title: `Task: ${task.length + 1}`}})}
+        dispatch({type:'ADD', tasks: {id:Date.now(), title: `Task: ${tasks.length + 1}`}})}
       >
         Add Task
       </button>
       <ul className="list-group mx-4">
-        {task.map((item) => (
+        {tasks.map((item) => (
           <li
             className="list-group-item d-flex justify-content-between"
             key={item.id}

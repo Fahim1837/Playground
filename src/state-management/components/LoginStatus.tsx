@@ -1,18 +1,18 @@
-import useAuth from "../hooks/useAuth"
+import useAuthStore from "../stores/auth-store"
 
  function LoginStatus() {
-    const {user, dispatch} = useAuth () 
+    const {user, login, logout} = useAuthStore() 
     if (user)
     return (
         <>
         <p>{user}</p>
-        <a href="#" onClick={() => dispatch({type:'OUT'})}>Logout</a>
+        <a href="#" onClick={() => logout()}>Logout</a>
         </>
     )
     else
     return (
         
-        <a href="#" onClick={() => dispatch({type:'IN', username:'Fahim Ahmed'} )}>Login</a>
+        <a href="#" onClick={() => login('Fahim Ahmed')}>Login</a>
 )
 }
 export default LoginStatus

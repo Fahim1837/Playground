@@ -1,17 +1,16 @@
 import useTask from "../hooks/useTask";
-import useAuth from "../hooks/useAuth";
+import useAuthStore from "../stores/auth-store";
 
 
 function TaskList() {
   const {tasks, dispatch} = useTask ()
-  const {user} = useAuth ()
+  const {user} = useAuthStore()
   return (
     <>
       <p> Username: {user}</p>
       <button
         className="btn btn-primary m-4"
-        onClick={() => 
-        dispatch({type:'ADD', tasks: {id:Date.now(), title: `Task: ${tasks.length + 1}`}})}
+        onClick={() => dispatch({type: 'ADD', tasks:{id: Date.now(), title:`Task: ${tasks.length +1}`}})}
       >
         Add Task
       </button>

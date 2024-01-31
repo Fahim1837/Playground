@@ -3,12 +3,15 @@ import Home from "./Home";
 import Contact from "./Contact";
 import UsersDetail from "./UsersDetail";
 import Layout from "./Layout";
-import UsersPage from "./UsersPAge";
+import UsersPage from "./UsersPage";
+import ErrorPage from "./ErrorPage";
 
 const router  = createBrowserRouter([
     {
         path: '/',
         element: <Layout/>,
+        errorElement: <ErrorPage/>,
+        
         children: [
             {path: '', element: <Home/>},
             {

@@ -15,7 +15,7 @@ function TaskList() {
         Add Task
       </button>
       <ul className="list-group mx-4">
-        {tasks.map((item) => (
+        {tasks?.map((item) => (
           <li
             className="list-group-item d-flex justify-content-between"
             key={item.id}
